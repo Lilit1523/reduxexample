@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import { fetchPosts } from '../action/postAction';
 
 
@@ -14,12 +15,14 @@ class Posts extends Component {
 	render() {
 		const postItems = this.props.posts.map(post => (
 			<Grid key={post.id}>
-				<Typography component="h1" variant="h5">
-					{post.title}
-				</Typography>
-				<Typography component="p">
-					{post.body}
-				</Typography>
+				<Box m={2}>
+					<Typography component="h1" variant="h5">
+						{post.title}
+					</Typography>
+					<Typography component="p">
+						{post.body}
+					</Typography>
+				</Box>
 			</Grid>
 		));
 

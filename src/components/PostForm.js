@@ -10,7 +10,23 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import DraftsIcon from '@material-ui/icons/Drafts';
 
+const heading3 = {
+	margin: '20px auto',
+	textAlign: 'center',
+}
+const spacing = {
+	margin: '0 20px 10px',
+}
+const draftsIcon = {
+	textAlign: 'center',
+	marginTop: '40px',
+}
+const form = {
+	width: '80%',
+	margin: '0 auto',
+}
 
 class PostForm extends Component {
 	constructor(props) {
@@ -38,27 +54,30 @@ class PostForm extends Component {
 
 	render() {
 		return (
-			<Container component="main" maxWidth="xs">
+			<Container component="main" maxWidth="md">
 				<div>
-					<Typography component="h1" variant="h3">
-						Add Post
+					<Grid item xs={12} sm={12} style={draftsIcon}>
+						<DraftsIcon />
+					</Grid>
+					<Typography component="h1" variant="h3" style={heading3}>
+						ASK US A QUESTION
 					</Typography>
-					<form onSubmit={this.onSubmit}>
-						<Grid item xs={12} sm={6}>
+					<form onSubmit={this.onSubmit} style={form}>
+						<Grid item xs={12} sm={12}>
 							<FormControlLabel 
+								style={spacing}
 								control={<Checkbox value="allowExtraEmails" color="primary" />}
                 				label="Checkbox box"
-							/><br />
-							<label>Title: </label><br />
-							<input 
-								type="text" 
-								name="title"
-								onChange={this.onChange} 
-								value={this.state.title}/>
+							/>
+						</Grid>
+						<Grid item xs={12} sm={6} md={8}>	
+							<TextField id="standard-basic" label="First Name" style={spacing} />
+							<TextField id="standard-basic" label="Phone Number" style={spacing} />
 						</Grid>
 						<br />
-						<Grid item xs={12} sm={6}>
+						<Grid item xs={12} sm={6} md={7}>
 							<TextField
+								style={spacing}
 				                variant="outlined"
 				                required
 				                fullWidth
@@ -69,7 +88,7 @@ class PostForm extends Component {
 				              />
 						</Grid>
 						<br />
-						<Button variant="contained" color="primary" type="submit">Submit</Button>
+						<Button style={spacing} variant="contained" color="primary" type="submit">Submit</Button>
 					</form>
 				</div>
 			</Container>
