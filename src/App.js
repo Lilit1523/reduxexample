@@ -6,6 +6,7 @@ import {
 	Link
 } from 'react-router-dom';
 import Header from './components/layout/Header';
+import Footer from './components/layout/footer';
 import About from './components/pages/About';
 
 import './App.css';
@@ -35,6 +36,7 @@ class App extends Component {
 			        	<Posts />
 			        </Route>
 			    </Switch>
+			    <Footer />
 			</Router>   
 	      </div>
 	    </Provider>
