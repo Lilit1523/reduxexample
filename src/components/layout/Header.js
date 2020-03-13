@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles(theme => ({
   headerStyle: {
@@ -50,6 +51,10 @@ export default function Header() {
 				</Link>
 				<Link className={classes.linkStyle} to="/about">About</Link>
 				<Link className={classes.linkStyle} to="/posts">Posts</Link>
+				<Link className={classes.linkStyle} to="/shop">
+					<AddShoppingCartIcon />
+					Shop
+				</Link>
 			</header>
 		</div>
 	);
