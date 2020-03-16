@@ -2,25 +2,22 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles(theme => ({
   headerStyle: {
-  	display: 'flex',
-  	justifyContent: 'center',
-  	background: '#333',
-	color: '#fff',
+  	background: '#262338',
 	textAlign: 'center',
 	padding: '10px',
   },
   linkStyle: {
-  	display: 'inherit',
-  	justifyContent: 'inherit',
-  	flex: '0 0 10%',
   	color: '#fff',
   	fontSize: '18px',
 	textDecoration: 'none',
+	display: 'flex',
+	justifyContent: 'center',
 	'& > svg': {
 		marginRight: '8px',
 	},
@@ -28,6 +25,9 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: 'underline',
 	}
   },
+  gridBox: {
+  	flex: '0 0 10%',
+  }
 }));
 
 
@@ -43,19 +43,47 @@ export default function Header() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
+		<Typography component="div" className={classes.root}>
 			<header className={classes.headerStyle}>
-				<Link className={classes.linkStyle} to="/">
-					<HomeIcon /> 
-					Home
-				</Link>
-				<Link className={classes.linkStyle} to="/about">About</Link>
-				<Link className={classes.linkStyle} to="/posts">Posts</Link>
-				<Link className={classes.linkStyle} to="/shop">
-					<AddShoppingCartIcon />
-					Shop
-				</Link>
+				<Grid container 
+					  spacing={3}
+					  justify="center"
+  					  alignItems="center">
+					<Grid item xs={4}>
+						<figure style={{margin: '0'}}>
+							<img src="images/logo.png" alt="Brand Logo" height="55" width="auto" />
+						</figure>
+					</Grid>
+					<Grid item xs={8}>
+						<Grid container 
+						      spacing={3}
+							  justify="center"
+  							  alignItems="center">
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/">
+									<HomeIcon /> 
+									Home
+								</Link>
+							</Grid>	
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/about">About</Link>
+							</Grid>
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/posts">Posts</Link>
+							</Grid>
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/shop">
+									<AddShoppingCartIcon />
+									Shop
+								</Link>
+							</Grid>
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/profile">Profile</Link>
+							</Grid>
+						</Grid>	
+					</Grid>
+				</Grid>
 			</header>
-		</div>
+		</Typography>
 	);
 }

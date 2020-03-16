@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      top: '45px',
+      top: '80px',
     },
   },
   menuButton: {
@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+    top: '80px',
   },
   content: {
     flexGrow: 1,

@@ -39,7 +39,7 @@ const container = {
 }
 
 const mainBlock = {
-	backgroundColor: '#e74c3c',
+	backgroundColor: 'rgb(38, 35, 56)',
 	textAlign: 'center',
 	color: '#fff',
 	padding: '30px',
