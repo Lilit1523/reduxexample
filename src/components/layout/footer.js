@@ -5,22 +5,16 @@ import ShopIcon from '@material-ui/icons/Shop';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-
-const mSpacing = {
-	margin: '20px auto',
-}
-
-const textCenter = {
-	textAlign: 'center',
-}
+import { 
+	makeStyles,
+	Container,
+	Box
+} from '@material-ui/core';
 
 const svgStyle = {
 	fontSize: '52px',
 	color: '#fff',
-}
+};
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -34,6 +28,8 @@ const useStyles = makeStyles(theme => ({
 		listStyleType: 'none',
 		display: 'flex',
 		justifyContent: 'space-around',
+		flexWrap: 'wrap',
+		padding: '0',
 		'& > li': {
 			margin: '30px 15px 10px',
 			'& > a': {
@@ -54,9 +50,9 @@ export default function Footer() {
 	return (
 		<footer className={classes.root}>
 			<Container component="main" maxWidth="md">
-				<Typography component="h1" variant="h3" style={{...textCenter, ...mSpacing}}>
+				<Box m={2} component="h1" textAlign="center" fontWeight={500}>
 					Get in touch
-				</Typography>
+				</Box>
 				<ul className={classes.socialLinks}>
 					<li><a href="#">
 							<FacebookIcon style={svgStyle} />

@@ -1,8 +1,11 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import { 
+	makeStyles,
+	Typography,
+	Grid,
+	Container
+} from '@material-ui/core';
+
 
 import UserShort from './my-profile/user-short';
 import UserPersonal from './my-profile/user-personal';
@@ -14,19 +17,20 @@ const useStyles = makeStyles(theme => ({
 	},
 	profileBlock: {
 		margin: '20px',
-		border: '1px solid #ccc',
+		border: '1.5px solid #eae8e8',
 		padding: '10px 15px',
 		borderRadius: '15px',
 	},
 }));
 
-const user = [
+const dummyUsers = [
 	{
 		id: 1,
 		name: 'Petros',
 		lastname: 'Poxosovich',
 		country: 'Albania',
 		src: '',
+		password: 'asdasd123',
 		email: 'petros@burunduk.com',
 		subscriptions: '100',
 		phone: '+37494417457',
@@ -34,28 +38,45 @@ const user = [
 	}
 ];
 
-function Profile() {
-	const classes = useStyles();
 
+const Profile = () => {
+	const classes = useStyles();
+	const [users ,setUser ] = useState(dummyUsers);
+	const changePassword = (pass, id) => {
+		let newUsers = users.map((user) => {
+			if(user.id === id){
+				return {
+					...user,
+					password: pass
+				}
+			}else{
+				return user;
+			}
+		})
+		
+		setUser(newUsers);
+	}
 	return (
 		<Typography component="div" className={classes.root}>
 			<Container component="main" maxWidth="md">
-				<Typography component="h3" variant="h5">
+				<Typography variant="h5">
 					My Profile
 				</Typography>
 				<Grid container 
 					  alignItems="center" 
-					  xs={12} sm={10} md={4} 
+					  xs={12} sm={8} md={4} item 
 					  className={classes.profileBlock}>
-					  {user.map(user => (
-						<UserShort user={user} />
+					  {users.map((user, index) => (
+						<UserShort changePassword={changePassword} key={index} user={user} />
 					  ))}
-					  {user.map(user => (
-						<UserPersonal user={user} />
+					  {users.map((user, index) => (
+						<UserPersonal changePassword={changePassword} key={index} user={user} />
 					  ))}
-					  {user.map(user => (
-						<UserShortContacts user={user} />
+					  {users.map((user, index) => (
+						<UserShortContacts key={index} user={user} />
 					  ))}
+					  
+					  
 					  
 				</Grid>
 			</Container>

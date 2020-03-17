@@ -1,72 +1,27 @@
 import React from 'react';
 import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles'
-import EdiText from 'react-editext';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import { 
+	makeStyles,
+	Grid,
+	Box
+} from '@material-ui/core';
+import InputEditText from './inputEditText';
 
-const useStyles = makeStyles(theme => ({
-	heading4: {
-		fontWeight: '300',
-		fontSize: '15px',
-	},
-	ediText: {
-		'& > div': {
-			justifyContent: 'space-between',
-			width: '100%',
-		},
-		'& > div > div:last-child button[editext="edit-button"]': {
-			backgroundColor: '#fff',
-			padding: '0',
-			border: 'none',
-			'&:hover': {
-				color: '#1ca6e8',
-			},
-			'&:before': {
-				display: 'none',
-			},
-		},	
-	},
-}));
-
-const UserPersonal = ({user}) => {
-	const classes = useStyles();
-	const [editing, setEditing] = useState(false);
-  	const [value, setValue] = useState("Password");
-  	const edit = useState("edit");
-
-  	const handleSave = value => {
-	    console.log(value);
-	    setValue(value);
-	};
-
+const UserPersonal = ({user,changePassword}) => {
+	
 	return (
 		<Grid item xs={12}>
-			<Box m={1} style={{marginTop: '20px', marginBottom: '20px'}}>
-				<Typography component="h4" variant="p" className={classes.heading4}>
-					PERSONAL DETAILS
-				</Typography>
+			<Box m={1} mt={4} mb={3} fontWeight={300} component="h3">
+				PERSONAL DETAILS
 			</Box>
-			<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>
-				<Typography component="h4" variant="p" className={classes.heading4}>
-					{user.email}
-				</Typography>
+			<Box m={1} fontWeight={300} component="h4">
+				{user.email}
 			</Box>
-			<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>	
-				<EdiText
-				  className={classes.ediText}
-		          value={value}
-		          type="password"
-		          onSave={handleSave}
-		          editing={editing}
-		          editButtonContent={edit}
-		        />
+			<Box m={1} fontWeight={300} component="h4">	
+				<InputEditText changePassword={changePassword} user={user} />
 			</Box>
-			<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>	
-				<Typography component="h4" variant="p" className={classes.heading4}>
-					{user.subscriptions}
-				</Typography>
+			<Box m={1} fontWeight={300} component="h4">	
+				{user.subscriptions}
 			</Box>	
 		</Grid>
 	);

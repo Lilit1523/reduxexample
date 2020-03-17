@@ -1,9 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import { 
+	makeStyles,
+	Typography,
+	Grid,
+	SvgIcon
+} from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
   gridBox: {
   	flex: '0 0 10%',
+  	margin: '0 8px',
   }
 }));
 
@@ -49,12 +52,12 @@ export default function Header() {
 					  spacing={3}
 					  justify="center"
   					  alignItems="center">
-					<Grid item xs={4}>
+					<Grid item xs={5}>
 						<figure style={{margin: '0'}}>
 							<img src="images/logo.png" alt="Brand Logo" height="55" width="auto" />
 						</figure>
 					</Grid>
-					<Grid item xs={8}>
+					<Grid item xs={7}>
 						<Grid container 
 						      spacing={3}
 							  justify="center"
