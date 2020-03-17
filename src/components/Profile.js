@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
-import { useState } from 'react';
-import EdiText from "react-editext";
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
+import UserShort from './my-profile/user-short';
+import UserPersonal from './my-profile/user-personal';
+import UserShortContacts from './my-profile/user-short-contacts';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: '3em',
-	},
-	avatarIconStyle: {
-		color: '#ccc',
-		fontSize: '7em',
-		width: '90%',
 	},
 	profileBlock: {
 		margin: '20px',
@@ -23,39 +18,24 @@ const useStyles = makeStyles(theme => ({
 		padding: '10px 15px',
 		borderRadius: '15px',
 	},
-	heading4: {
-		fontWeight: '300',
-		fontSize: '15px',
-	},
-	ediText: {
-		'& > div': {
-			justifyContent: 'space-between',
-			width: '100%',
-		},
-		'& > div > div:last-child button[editext="edit-button"]': {
-			backgroundColor: '#fff',
-			padding: '0',
-			border: 'none',
-			'&:hover': {
-				color: '#1ca6e8',
-			},
-			'&:before': {
-				display: 'none',
-			},
-		},	
-	},
 }));
 
-export default function Profile() {
-	const classes = useStyles();
-	const [editing, setEditing] = useState(false);
-  	const [value, setValue] = useState("Password");
-  	const edit = useState("edit");
+const user = [
+	{
+		id: 1,
+		name: 'Petros',
+		lastname: 'Poxosovich',
+		country: 'Albania',
+		src: '',
+		email: 'petros@burunduk.com',
+		subscriptions: '100',
+		phone: '+37494417457',
+		address: 'Davit Malyan 2',
+	}
+];
 
-  	const handleSave = value => {
-	    console.log(value);
-	    setValue(value);
-	};
+function Profile() {
+	const classes = useStyles();
 
 	return (
 		<Typography component="div" className={classes.root}>
@@ -67,61 +47,19 @@ export default function Profile() {
 					  alignItems="center" 
 					  xs={12} sm={10} md={4} 
 					  className={classes.profileBlock}>
-					<Grid item xs={5}>
-						<AccountCircleIcon className={classes.avatarIconStyle} />
-					</Grid>
-					<Grid item xs={7}>
-						<Typography component="h4" variant="p" className={classes.heading4}>
-							Name
-						</Typography>
-						<Typography component="h4" variant="p" className={classes.heading4}>
-							Last Name
-						</Typography>
-						<Typography component="h4" variant="p" className={classes.heading4}>
-							Country
-						</Typography>
-					</Grid>
-					<Grid item xs={12}>
-						<Box m={1} style={{marginTop: '20px', marginBottom: '20px'}}>
-							<Typography component="h4" variant="p" className={classes.heading4}>
-								PERSONAL DETAILS
-							</Typography>
-						</Box>
-						<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>
-							<Typography component="h4" variant="p" className={classes.heading4}>
-								Email
-							</Typography>
-						</Box>
-						<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>	
-							<EdiText
-							  className={classes.ediText}
-					          value={value}
-					          type="password"
-					          onSave={handleSave}
-					          editing={editing}
-					          editButtonContent={edit}
-					        />
-						</Box>
-						<Box m={1} style={{marginTop: '8px', marginBottom: '8px'}}>	
-							<Typography component="h4" variant="p" className={classes.heading4}>
-								Subscriptions
-							</Typography>
-						</Box>	
-					</Grid>
-					<Grid item xs={12}>
-						<Box m={1} style={{marginTop: '40px', marginBottom: '10px'}}>
-							<Typography component="h4" variant="p" className={classes.heading4}>
-								Phone
-							</Typography>
-						</Box>
-						<Box m={1} style={{marginBottom: '10px'}}>	
-							<Typography component="h4" variant="p" className={classes.heading4}>
-								Address
-							</Typography>
-						</Box>
-					</Grid>
+					  {user.map(user => (
+						<UserShort user={user} />
+					  ))}
+					  {user.map(user => (
+						<UserPersonal user={user} />
+					  ))}
+					  {user.map(user => (
+						<UserShortContacts user={user} />
+					  ))}
+					  
 				</Grid>
 			</Container>
 		</Typography>
 	);
 }
+export default Profile;
