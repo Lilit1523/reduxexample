@@ -10,6 +10,7 @@ import Footer from './components/layout/footer';
 import About from './components/pages/About';
 import Shop from './components/pages/Shop';
 import Profile from './components/Profile';
+import CompleteProfile from './components/CompleteProfile';
 
 import './App.css';
 
@@ -42,6 +43,9 @@ class App extends Component {
 			        </Route>
 			        <Route exact path="/profile" >
 			        	<Profile />
+			        </Route>
+					<Route exact path="/complete-profile" >
+			        	<CompleteProfile />
 			        </Route>
 			    </Switch>
 			    <Footer />

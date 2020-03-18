@@ -83,6 +83,9 @@ export default function Header() {
 							<Grid className={classes.gridBox}>
 								<Link className={classes.linkStyle} to="/profile">Profile</Link>
 							</Grid>
+							<Grid className={classes.gridBox}>
+								<Link className={classes.linkStyle} to="/complete-profile">Complete Profile</Link>
+							</Grid>
 						</Grid>	
 					</Grid>
 				</Grid>

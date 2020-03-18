@@ -10,13 +10,14 @@ import {
 import UserShort from './my-profile/user-short';
 import UserPersonal from './my-profile/user-personal';
 import UserShortContacts from './my-profile/user-short-contacts';
+import UserProfileStatus from './my-profile/user-profile-status';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: '3em',
 	},
 	profileBlock: {
-		margin: '20px',
+		margin: '20px 0',
 		border: '1.5px solid #eae8e8',
 		padding: '10px 15px',
 		borderRadius: '15px',
@@ -63,20 +64,28 @@ const Profile = () => {
 					My Profile
 				</Typography>
 				<Grid container 
-					  alignItems="center" 
-					  xs={12} sm={8} md={4} item 
-					  className={classes.profileBlock}>
-					  {users.map((user, index) => (
-						<UserShort key={index} user={user} />
-					  ))}
-					  {users.map((user, index) => (
-						<UserPersonal changePassword={changePassword} key={index} user={user} />
-					  ))}
-					  {users.map((user, index) => (
-						<UserShortContacts key={index} user={user} />
-					  ))}				  
-					  
-				</Grid>
+					  alignItems="center"
+					  justify="space-between"
+					  xs={12} sm={12} md={12} item>
+					<Grid 	   
+						xs={12} sm={8} md={4} item 
+						className={classes.profileBlock}>
+						{users.map((user, index) => (
+							<UserShort key={index} user={user} />
+						))}
+						{users.map((user, index) => (
+							<UserPersonal changePassword={changePassword} key={index} user={user} />
+						))}
+						{users.map((user, index) => (
+							<UserShortContacts key={index} user={user} />
+						))}	
+					</Grid>	
+					<Grid 
+						xs={12} sm={12} md={6} item 
+					  	className={classes.profileBlock}>
+							<UserProfileStatus />
+					</Grid>
+				</Grid>				
 			</Container>
 		</Typography>
 	);

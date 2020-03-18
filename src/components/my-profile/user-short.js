@@ -39,6 +39,5 @@ const UserShort = ({user}) => {
 			</Grid>
 		</Grid>
 	);
-
 }
 export default UserShort;
