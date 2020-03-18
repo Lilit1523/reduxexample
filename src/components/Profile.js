@@ -67,7 +67,7 @@ const Profile = () => {
 					  xs={12} sm={8} md={4} item 
 					  className={classes.profileBlock}>
 					  {users.map((user, index) => (
-						<UserShort changePassword={changePassword} key={index} user={user} />
+						<UserShort key={index} user={user} />
 					  ))}
 					  {users.map((user, index) => (
 						<UserPersonal changePassword={changePassword} key={index} user={user} />
