@@ -67,7 +67,7 @@ const CompleteProfile = () => {
                             COMPLETE YOUR PROFILE
                         </Box>
                         <Box m={1} fontWeight={400} component="h5">
-                            (VERIFY PROFESSIONAL CLIENTA QUESTIONS)
+                            (VERIFY PROFESSIONAL CLIENTS QUESTIONS)
                         </Box>
                     </Grid>
                     <form onSubmit={onSubmit} style={{ width: '100%' }}>
