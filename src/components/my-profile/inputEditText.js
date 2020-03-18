@@ -1,16 +1,10 @@
 import React, { Component, useState } from 'react';
-import Box from '@material-ui/core/Box';
+import { Box, Grid, Button } from '@material-ui/core';
 
 const btn = {
-	background: '#fff',
-	border: 'none',
-	outline: 'none',
-	cursor: 'pointer'
-}
-
-const flexBlock = {
-	display: 'flex',
-	justifyContent: 'space-between',
+	textTransform: 'none',
+	minWidth: 'fit-content',
+	margin: '0 2px'
 }
 
 class InputEditText extends Component {
@@ -36,7 +30,6 @@ class InputEditText extends Component {
 	    this.setState({
 	      inputValue: input
 		});
-	
 	}
 	render() {
 		let userIsEditing = this.state.userIsEditing;
@@ -44,21 +37,24 @@ class InputEditText extends Component {
 		
 	    if (userIsEditing) {
 	        return (
-	          <div style={flexBlock}>
-	            <TextInput 
-	              saveInput={ this.saveInput }
-	             />
-	            <button onClick={ this.toggleEditing } style={btn}>done</button>            
-	          </div>    
+				<Grid container 
+				alignItems="center">
+					<TextInput 
+					saveInput={ this.saveInput }
+					/>
+					<Button size="small" onClick={ this.toggleEditing } style={btn}>done</Button>            
+	          	</Grid>    
 	        ) 
 	    }
 		return (
-			<div style={flexBlock}>
+			<Grid container 
+				alignItems="center"
+				justify="space-between">
 		        <TextField 
 		          text={ password }
 		        />
-		        <button onClick={ this.toggleEditing } style={btn}>edit</button>
-		    </div> 
+		        <Button size="small" onClick={ this.toggleEditing } style={btn}>edit</Button>
+		    </Grid> 
 		);	
 	}
 }
@@ -76,12 +72,12 @@ class TextInput extends Component {
 	render() {
 	    let label = this.props.label;
 	    return (
-	      <div style={flexBlock}>
-	        <input 
-	          type="text"  
-	          ref={this.inputRef}
-	         />
-	        <button onClick={ this.handleInput } style={btn}>save</button>
+			<div>
+				<input 
+				type="text"  
+				ref={this.inputRef}
+				/>
+				<Button size="small" onClick={ this.handleInput } style={btn}>save</Button>
 	      </div>
 	    )
 	}
@@ -92,6 +88,6 @@ class TextField extends Component {
 	    return (
 	        <Box>{ text }</Box>
 	    )
-	  }
+	}
 }
 export default InputEditText;

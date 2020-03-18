@@ -74,9 +74,7 @@ const Profile = () => {
 					  ))}
 					  {users.map((user, index) => (
 						<UserShortContacts key={index} user={user} />
-					  ))}
-					  
-					  
+					  ))}				  
 					  
 				</Grid>
 			</Container>
