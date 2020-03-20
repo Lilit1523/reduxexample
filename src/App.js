@@ -20,6 +20,7 @@ import Posts from './components/Posts';
 import PostForm from './components/PostForm';
 
 import store from './store';
+import MyMoney from './components/my-money/my-money';
 
 class App extends Component {
 	render() {
@@ -46,6 +47,9 @@ class App extends Component {
 			        </Route>
 					<Route exact path="/complete-profile" >
 			        	<CompleteProfile />
+			        </Route>
+					<Route exact path="/my-money" >
+			        	<MyMoney />
 			        </Route>
 			    </Switch>
 			    <Footer />
